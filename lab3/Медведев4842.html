@@ -1,94 +1,93 @@
-<html>
-<head>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>My first X3DOM page</title>
-    <link rel="stylesheet" href="https://www.x3dom.org/download/dev/x3dom.css" />
-    <script src="https://www.x3dom.org/download/dev/x3dom-full.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="My%20first%20X3DOM%20page_files/x3dom.css">
+    <script src="My%20first%20X3DOM%20page_files/x3dom-full.js"></script>
+    <script src="My%20first%20X3DOM%20page_files/vue.js"></script>
 </head>
 <body>
-<x3d width='500px' height='400px' id="abc">
+<x3d width="1024px" height="800px" id="abc" >
     <scene>
-                <Anchor url="https://ru.wikipedia.org/wiki/Стена" parameter="target='_self'">
-        <Transform translation="-8 4 0">
-            <Inline url='oven.x3d' def="oven"></Inline>
-        </Transform>
-        <Transform translation="-2 4 -2">
-            <shape use="oven"></shape>
-        </Transform>
-                </Anchor>
-        <Anchor  url="https://ru.wikipedia.org/wiki/Пол" parameter="target='_self'">
-        <Transform translation="5 3 -1" scale="3 3 3">
-            <Inline url='cooker.x3d'></Inline>
-        </Transform>
-        </Anchor>
-            <transform scale="1 10 10" translation="2 0.5 4">
-                <shape>
-                    <appearance>
+        <anchor url="https://ru.wikipedia.org/wiki/Стена" parameter="target='_self'" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1">
+            <transform translation="-8 4 0" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scale="1,1,1" scaleorientation="0,0,0,0">
+                <inline url="oven.x3d" def="oven" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" load="true" namespacename=""></inline>
+            </transform>
+            <transform translation="-2 4 -2" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scale="1,1,1" scaleorientation="0,0,0,0">
+                <shape use="oven"></shape>
+            </transform>
+        </anchor>
 
-                        <Material ambientIntensity='0' diffuseColor='1,1,1' emissiveColor='0,0,0' metadata='X3DMetadataObject' shininess='0.2' specularColor='0,0,0' transparency='0' ></Material>
-                    </appearance>
-                    <IndexedTriangleStripSet index='0 1 2 3 0' solid='false'>
-                        <Coordinate point='-12 0 -10, 12 0 -10, 12 0 10 -12 0 10'></Coordinate>
-                    </IndexedTriangleStripSet>
+        <navigationInfo id="head" headlight='false' type='"EXAMINE"'></navigationInfo>
+        <anchor url="https://ru.wikipedia.org/wiki/Пол" parameter="target='_self'" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1">
+            <transform translation="5 3 -1" scale="3 3 3" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scaleorientation="0,0,0,0">
+                <inline url="cooker.x3d" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" load="true" namespacename=""></inline>
+            </transform>
+        </anchor>
+        <transform scale="1 10 10" translation="2 0.5 4" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scaleorientation="0,0,0,0">
+            <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                <appearance sorttype="auto" alphaclipthreshold="0.1">
+
+                    <material ambientintensity="0" diffusecolor="1,1,1" emissivecolor="0,0,0" metadata="X3DMetadataObject" shininess="0.2" specularcolor="0,0,0" transparency="0"></material>
+                </appearance>
+                <indexedtrianglestripset index="0 1 2 3 0" solid="false" ccw="true" usegeocache="true" lit="true" colorpervertex="true" normalpervertex="true" normalupdatemode="fast">
+                    <coordinate point="-12 0 -10, 12 0 -10, 12 0 10 -12 0 10"></coordinate>
+                </indexedtrianglestripset>
 
 
-                </shape>
-            </transform>
-            <transform scale="1 1 1" translation="-1 0 0">
-                <shape>
-                    <IndexedLineSet coordIndex="0 1 2 3" colorIndex="0 1 2 0" colorPerVertex='true'>
-                        <Coordinate point="0 0 0, 0 2 0, 2 2 0, 2 0 0"></Coordinate>
-                    </IndexedLineSet>
-                </shape>
-            </transform>
-            <transform scale="1 1 1" translation="-1 0 2">
-                <shape>
-                    <IndexedLineSet coordIndex="0 1 2 3" colorIndex="0 1 2 0" colorPerVertex='true'>
-                        <Coordinate point="0 0 0, 0 2 0, 2 2 0, 2 0 0"></Coordinate>
-                    </IndexedLineSet>
-                </shape>
-            </transform>
-            <transform scale="1 1 1" translation="-1 2 2" rotation="0 1 0 1.57">
-                <shape>
-                    <IndexedLineSet coordIndex="0 1 2 3" colorIndex="0 1 2 3" colorPerVertex='true'>
-                        <Coordinate point="0 0 0, 2 0 0, 2 0 2, 0 0 2"></Coordinate>
-                    </IndexedLineSet>
-                </shape>
-            </transform>
-            <transform scale="1 1 1" translation="-1 2 0">
-                <shape>
-                    <IndexedLineSet coordIndex="0 1 2 3" colorIndex="0 1 2 0" colorPerVertex='true'>
-                        <Coordinate point="0 0 0, 0 2 0, 2 2 0, 2 0 0"></Coordinate>
-                    </IndexedLineSet>
-                </shape>
-            </transform>
-            <shape>
-                <PointSet>
-                    <Color color="1 0 0, 0 1 0, 0 0 1, 0.8 0.8 0.8"></Color>
-                    <Coordinate point="–2 0 0, 0 0 0, 0 0 2, 0 0 4"></Coordinate>
-                </PointSet>
             </shape>
-            <transform scale="5 5 5">
-                    <Shape>
-                <IndexedFaceSet ccw="true" colorPerVertex="true" convex="true"
-                                creaseAngle="0" normalPerVertex="true" solid="false"
-                                coordIndex="0 4 7 3 -1 5 6 2 1 -1 4 5 6 7 -1 6 7 3 2 -1"
-                                colorIndex="0 1 2 3 -1 4 5 6 0 -1 1 2 3 4 -1 5 6 0 1 -1">
-                    <Coordinate point="-2 0 2, 2 0 2, 2 0 -2, -2 0 -2,
--2 4 2, 2 4 2, 2 4 -2, -2 4 -2"></Coordinate>
-                    <Color color="0 0 1, 0 1 0, 0 1 1, 1 0 0, 1 0 1, 1 1 0, 1 1 1"></Color>
-                </IndexedFaceSet>
-                <Appearance>
-                    <Material></Material>
-                </Appearance>
-            </Shape>
-            </transform>
-        <DirectionalLight id="directional" direction='-1 -1 -1' on ="TRUE" intensity='0.3' shadowIntensity='0.7'> </DirectionalLight>
-        <PointLight id='point' on='TRUE' intensity='0.9000' color='1 0.6 0.6' location='0.6 0.6 0.5 ' radius='0.0300' >  </PointLight>
+        </transform>
+        <transform scale="1 1 1" translation="-1 0 0" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scaleorientation="0,0,0,0">
+            <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                <indexedlineset coordindex="0 1 2 3" colorindex="0 1 2 0" colorpervertex="true" solid="true" ccw="true" usegeocache="true" lit="true">
+                    <coordinate point="0 0 0, 0 2 0, 2 2 0, 2 0 0"></coordinate>
+                </indexedlineset>
+            </shape>
+        </transform>
+        <transform scale="1 1 1" translation="-1 0 2" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scaleorientation="0,0,0,0">
+            <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                <indexedlineset coordindex="0 1 2 3" colorindex="0 1 2 0" colorpervertex="true" solid="true" ccw="true" usegeocache="true" lit="true">
+                    <coordinate point="0 0 0, 0 2 0, 2 2 0, 2 0 0"></coordinate>
+                </indexedlineset>
+            </shape>
+        </transform>
+        <transform scale="1 1 1" translation="-1 2 2" rotation="0 1 0 1.57" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" scaleorientation="0,0,0,0">
+            <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                <indexedlineset coordindex="0 1 2 3" colorindex="0 1 2 3" colorpervertex="true" solid="true" ccw="true" usegeocache="true" lit="true">
+                    <coordinate point="0 0 0, 2 0 0, 2 0 2, 0 0 2"></coordinate>
+                </indexedlineset>
+            </shape>
+        </transform>
+
+        <transform scale="1 1 1" translation="-1 2 0" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scaleorientation="0,0,0,0">
+            <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                <indexedlineset coordindex="0 1 2 3" colorindex="0 1 2 0" colorpervertex="true" solid="true" ccw="true" usegeocache="true" lit="true">
+                    <coordinate point="0 0 0, 0 2 0, 2 2 0, 2 0 0"></coordinate>
+                </indexedlineset>
+            </shape>
+        </transform>
+        <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+            <pointset solid="true" ccw="true" usegeocache="true" lit="true">
+                <color color="1 0 0, 0 1 0, 0 0 1, 0.8 0.8 0.8"></color>
+                <coordinate point="–2 5 5, 0 7 6, 0 2 4, 0 3 8"></coordinate>
+            </pointset>
+        </shape>
+        <transform scale="5 5 5" render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" translation="0,0,0" rotation="0,0,0,0" scaleorientation="0,0,0,0">
+            <shape render="true" visible="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                <indexedfaceset ccw="true" colorpervertex="true" convex="true" creaseangle="0" normalpervertex="true" solid="false" coordindex="0 4 7 3 -1 5 6 2 1 -1 4 5 6 7 -1 6 7 3 2 -1" colorindex="0 1 2 3 -1 4 5 6 0 -1 1 2 3 4 -1 5 6 0 1 -1" usegeocache="true" lit="true" normalupdatemode="fast" normalindex="" texcoordindex="">
+                    <coordinate point="-2 0 2, 2 0 2, 2 0 -2, -2 0 -2,
+-2 4 2, 2 4 2, 2 4 -2, -2 4 -2"></coordinate>
+                    <color color="0 0 1, 0 1 0, 0 1 1, 1 0 0, 1 0 1, 1 1 0, 1 1 1"></color>
+                </indexedfaceset>
+                <appearance sorttype="auto" alphaclipthreshold="0.1">
+                    <material ambientintensity="0.2" diffusecolor="0.8,0.8,0.8" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                </appearance>
+            </shape>
+        </transform>
+        <directionallight id="directional" direction="-1 -1 -1" on="TRUE" intensity="0.3" shadowintensity="0.7" color="1,1,1" shadowmapsize="1024" znear="-1" zfar="-1" shadowcascades="10" shadowsplitfactor="1" shadowsplitoffset="0.1" shadowFilterSize="10" shadowMapSize="2024"> </directionallight>
+        <pointlight id="point" on="TRUE" intensity="0.3" color="1 0.6 0.6" location="0.6 10 0.5 " radius="1300" shadowmapsize="1024" znear="-1" zfar="-1" attenuation="1,0,0" shadowintensity="0.7">  </pointlight>
     </scene>
-</x3d>
-<script>
-    var app = new Vue("#abc")
-</script>
+    </x3d>
+
+
 </body>
 </html>
