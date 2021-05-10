@@ -7,73 +7,95 @@
     <script src="https://www.x3dom.org/download/x3dom.js"></script>
 </head>
 <body>
-    <script>
-        let boxId = 'BoxId';
-        let lastNode = null;
-        function setBoxId(i) {
-            console.log('a',  i)
-            boxId = i;
-            if (lastNode) {
-                document.getElementById('scene').removeChild(lastNode);
-            }
-            let r = document.createElement('route');
-            r.setAttribute('fromField', 'value_changed');
-            r.setAttribute('fromNode', 'BoxChaser');
-            r.setAttribute('toField', 'set_translation');
-            r.setAttribute('toNode', i)
-            console.log('b')
-            //console.log(document.getElementById('route').getAttribute('toNode'))
-            console.log('c')
-            document.getElementById('scene').appendChild(r);
-            console.log(r)
-            lastNode = r;
-            console.log('c')
-            //document.getElementById('route').setAttribute('toNode',i)
-        }
+<script>
+    let boxId = 'BoxId';
+    let lastNode = null;
+    let chaser = "BoxChaser";
 
-        function move(point, event) {
-            event.hitPoint = null;
-            console.log(event);
-            console.log(point);
-            console.log(document.getElementById(boxId).getAttribute('translation'))
-            document.getElementById("BoxChaser").setAttribute("set_destination", point)
-        };
-   </script>
-    <X3D>
-        <Scene id="scene">
-            <PositionChaser DEF="BoxChaser" id="BoxChaser" duration="1" initialDestination="-3 0 0"></PositionChaser>
-            <Transform onClick="move(event.hitPnt,event);">
-                <Shape>
-                    <Appearance>
-                        <Material></Material>
-                    </Appearance><Box size="10 0.1 10"></Box>
-                </Shape>
-            </Transform>
-            <Transform DEF="Box" id="Box" onClick="setBoxId('Box');">
-                <Shape>
-                    <Appearance>
-                        <Material diffuseColor="#773333">
-                        </Material>
-                    </Appearance>
-                    <Box></Box>
-                </Shape>
-            </Transform>
-            <Transform DEF="Box2" id="Box2" onClick="setBoxId('Box2');" translation="2 0 0">
-                <Shape>
-                    <Appearance>
-                        <Material diffuseColor="#335599"></Material>
-                    </Appearance>
-                    <Box></Box>
-                </Shape>
-            </Transform>
-
-            <!--<ROUTE fromNode="BoxChaser" fromField="value_changed" toNode="" id="route" toField="set_translation"></ROUTE>-->
-        </Scene>
-    </X3D>
-    <style>
-        x3d, canvas {
-            width: 100%
+    function setBoxId(i) {
+        console.log('a', i)
+        boxId = i;
+        console.log('set boxId to' , boxId)
+       if(a=="Box")
+           chaser="BoxChaser"
+        else {
+           chaser = "BoxChaser2"
+           console.log("set chaser to 2")
+       }
+        console.log('set chaser to' , chaser)
+        if (lastNode) {
+            document.getElementById('scene').removeChild(lastNode);
         }
-    </style>
+        let r = document.createElement('route');
+        r.setAttribute('fromField', 'value_changed');
+        r.setAttribute('fromNode', 'BoxChaser');
+        r.setAttribute('toField', 'set_translation');
+
+        //  document.getElementById("BoxChaser").setAttribute(
+        //      'initial_destination',
+        //      document.getElementById(i).getAttribute("translation"));
+        //  console.log('from',document.getElementById(i).getAttribute("translation"))
+        // r.setAttribute('toNode', i)
+        // console.log('b')
+//console.log(document.getElementById('route').getAttribute('toNode'))
+        console.log('c')
+        document.getElementById('scene').appendChild(r);
+        console.log(r)
+        lastNode = r;
+        console.log('c')
+//document.getElementById('route').setAttribute('toNode',i)
+    }
+
+    function move(point, event) {
+        console.log(event);
+        console.log(point);
+        if(boxId=="Box2")
+            chaser="BoxChaser2"
+        else
+            chaser="BoxChaser"
+        console.log("boxId", boxId, chaser);
+        console.log(document.getElementById(boxId).getAttribute('translation'))
+        document.getElementById(chaser).setAttribute("set_destination", point)
+    };
+</script>
+<X3D>
+    <Scene id="scene">
+        <PositionChaser DEF="BoxChaser" id="BoxChaser" duration="1"></PositionChaser>
+        <PositionChaser DEF="BoxChaser2" id="BoxChaser2" duration="1"></PositionChaser>
+        <Transform onClick="move(event.hitPnt,event);">
+            <Shape>
+                <Appearance>
+                    <Material></Material>
+                </Appearance><Box size="10 0.1 10"></Box>
+            </Shape>
+        </Transform>
+        <Transform DEF="Box" id="Box" onClick="setBoxId('Box');">
+            <Shape>
+                <Appearance>
+                    <Material diffuseColor="#773333">
+                    </Material>
+                </Appearance>
+                <Box></Box>
+            </Shape>
+        </Transform>
+        <Transform DEF="Box2" id="Box2" onClick="setBoxId('Box2');" translation="2 0 0">
+            <Shape>
+                <Appearance>
+                    <Material diffuseColor="#335599"></Material>
+                </Appearance>
+                <Box></Box>
+            </Shape>
+        </Transform>
+
+        <ROUTE fromNode="BoxChaser" fromField="value_changed" toNode="Box" id="route" toField="set_translation"></ROUTE>
+        <ROUTE fromNode="BoxChaser2" fromField="value_changed" toNode="Box2" id="route2" toField="set_translation"></ROUTE>
+
+    </Scene>
+</X3D>
+<style>
+    x3d, canvas {
+        width: 100%
+    }
+</style>
 </body>
 </html>
