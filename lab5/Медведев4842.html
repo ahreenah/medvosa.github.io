@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -15,13 +13,21 @@
     function setBoxId(i) {
         console.log('a', i)
         boxId = i;
-        console.log('set boxId to' , boxId)
+      console.log('material'+boxId)
+      oppositeBoxId = boxId[boxId.length-1]=='2'?
+        'materialBox':'materialBox2'
+      console.log(oppositeBoxId)
+      console.log(document.getElementById('material'+boxId).setAttribute('diffuseColor','#229933'))
+      console.log(document.getElementById(oppositeBoxId).setAttribute('diffuseColor','#222222'))
+        // console.log('set boxId to' , boxId)
        if(a=="Box")
            chaser="BoxChaser"
         else {
            chaser = "BoxChaser2"
            console.log("set chaser to 2")
        }
+      console.log('afterIf')
+           console.log('material'+chaser) 
         console.log('set chaser to' , chaser)
         if (lastNode) {
             document.getElementById('scene').removeChild(lastNode);
@@ -72,7 +78,7 @@
         <Transform DEF="Box" id="Box" onClick="setBoxId('Box');">
             <Shape>
                 <Appearance>
-                    <Material diffuseColor="#773333">
+                    <Material diffuseColor="#222222" id='materialBox'>
                     </Material>
                 </Appearance>
                 <Box></Box>
@@ -81,7 +87,7 @@
         <Transform DEF="Box2" id="Box2" onClick="setBoxId('Box2');" translation="2 0 0">
             <Shape>
                 <Appearance>
-                    <Material diffuseColor="#335599"></Material>
+                    <Material diffuseColor="#222222" id='materialBox2'></Material>
                 </Appearance>
                 <Box></Box>
             </Shape>
